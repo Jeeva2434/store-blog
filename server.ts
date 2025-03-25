@@ -5,6 +5,32 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import bootstrap from './src/main.server';
 
+// declare const global: any; // Avoid TypeScript errors for global object
+
+// if (typeof global.window === 'undefined') {
+//   global.window = {} as Window; // Cast empty object as Window type
+// }
+
+// if (typeof globalThis.window === 'undefined') {
+//   (globalThis as any).window = {
+//     document: {
+//       createElement: () => ({
+//         style: {}, // Minimal mock to prevent errors
+//       }),
+//       querySelector: () => null, // Avoids `null` issues
+//     },
+//     navigator: {
+//       userAgent: 'SSR', // Helps some libraries detect server environment
+//     },
+//   } as unknown as Window;
+// }
+
+// if (typeof globalThis.document === 'undefined') {
+//   globalThis.document = globalThis.window.document;
+// }
+
+
+
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();

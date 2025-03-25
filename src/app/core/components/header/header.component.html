@@ -1,0 +1,22 @@
+<header [class.sticky]="isSticky">
+    <div class="container">
+      <div class="logo">T-Shirt Store</div>
+  
+      <!-- Mobile Menu Button (Toggles between ☰ and ✖) -->
+      <button class="menu-btn" (click)="toggleMenu()">
+        {{ isMenuOpen ? '✖' : '☰' }}
+      </button>
+  
+      <!-- Navigation Menu -->
+      <nav [class.open]="isMenuOpen">
+        <ul>
+          @for(item of navItems; track item.pageCode){
+            <li (click)="setActive(item)">
+              <a routerLinkActive="active" routerLink={{item.pageUrl}}>{{ item.pageCode }}</a>
+            </li>
+          }
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
